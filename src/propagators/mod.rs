@@ -138,7 +138,7 @@ impl<'a> Propagator<'a> {
                 // Error is too high and using adaptive step size
                 let proposed_step = 0.9 * self.details.step
                     * (self.opts.tolerance / self.details.error)
-                        .powf(1.0 / (self.order as f64 - 1.0));
+                        .powf(1.0 / (f64::from(self.order) - 1.0));
                 self.details.step = if proposed_step < self.opts.min_step {
                     self.opts.min_step
                 } else {
@@ -181,9 +181,9 @@ impl Options {
     ///  adaptive step size. TODO: Add algorithms for step size computation (sigmoid, etc.)
     pub fn with_adaptive_step(min_step: f64, max_step: f64, tolerance: f64) -> Options {
         Options {
-            min_step: min_step,
-            max_step: max_step,
-            tolerance: tolerance,
+            min_step,
+            max_step,
+            tolerance,
             fixed_step: false,
         }
     }
