@@ -117,14 +117,12 @@ fn geo_day_prop() {
                 }
                 println!("p_id={} => {:?}", p_id, prop.latest_details());
                 assert_eq!(
-                    state,
-                    all_rslts[p_id],
+                    state, all_rslts[p_id],
                     "geo prop failed for p_id = {}",
                     p_id
                 );
                 assert_eq!(
-                    iterations,
-                    all_it_cnt[p_id],
+                    iterations, all_it_cnt[p_id],
                     "wrong number of iterations (p_id = {})",
                     p_id
                 );
