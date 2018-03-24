@@ -15,7 +15,7 @@ pub trait Orbit {
     fn to_state() -> Vector6<f64>;
     /// Creates a new type from this state. This is use for  compatibility with the `propagator` module.
     // XXX: Should this be an update(s: Vector6)? That way the frame is implied.
-    fn from_state(s: Vector<f64>) -> Self;
+    fn from_state(s: Vector6<f64>) -> Self;
     /// Borrow the frame in which this orbit is defined.
     fn frame(&self) -> &Frame;
 }
@@ -32,7 +32,7 @@ pub trait Frame: Display {
 #[derive(Debug)]
 pub enum Origin {
     Sun,
-    /*Mercury,*/ Venus,
+    Mercury, Venus,
     Earth,
     Mars,
     Jupiter,
@@ -47,6 +47,7 @@ impl Origin {
     fn gm(&self) -> f64 {
         match *self {
             Origin::Sun => 1.32712440017987e11,
+            Origin::Mercury => 2.2032e4,
             Origin::Venus => 3.24858599e5,
             Origns::Earth => 3.98600433e5,
             Origin::Mars => 4.28283100e4,
@@ -60,14 +61,15 @@ impl Origin {
     // Returns the default radius of the given origin in kilometers
     fn radius(&self) -> f64 {
         match *self {
-            Origin::Sun => 695700,
-            Origin::Venus => 6051.8,
-            Origns::Earth => 6378.1363,
-            Origin::Mars => 3396.19,
-            Origin::Jupiter => 71492.0,
-            Origin::Saturn => 60268.0,
-            Origin::Uranus => 25559.0,
-            Origin::Neptune => 24622.0,
+            Origin::Sun => 695_700.0,
+            Origin::Mercury => 2_439.7,
+            Origin::Venus => 6_051.8,
+            Origns::Earth => 6_378.1363,
+            Origin::Mars => 3_396.19,
+            Origin::Jupiter => 71_492.0,
+            Origin::Saturn => 60_268.0,
+            Origin::Uranus => 25_559.0,
+            Origin::Neptune => 24_622.0,
         }
     }
 }
