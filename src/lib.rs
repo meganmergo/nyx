@@ -63,7 +63,7 @@
 ///         5.848940867758592,
 ///     ]);
 ///
-///     let mut dyn = TwoBody::from_state_vec::<EARTH>(init);
+///     let mut dynamics= TwoBody::from_state_vec::<EARTH>(init);
 ///     let mut prop = Propagator::new::<RK89>(
 ///         &mut dyn,
 ///         &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStepPV {}),
@@ -110,7 +110,7 @@ pub mod propagators;
 ///         ModifiedJulian { days: 21546.0 },
 ///     );
 ///
-///     let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+///     let mut dynamics= TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
 ///     let mut prop = Propagator::new::<RK89>(
 ///         &mut dyn,
 ///         &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStepPV {}),

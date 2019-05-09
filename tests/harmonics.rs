@@ -64,7 +64,7 @@ fn gmat_val_harmonics_j2jgm3() {
 
     let mut prop = Propagator::new::<RK89>(&PropOpts::with_adaptive_step(min_step, max_step, accuracy));
 
-    let mut dyn = J2Dyn {
+    let mut dynamics= J2Dyn {
         count: 0,
         twobody: TwoBody::from_state_vec::<EARTH>(&initial_state.to_cartesian_vec()),
         harmonics: Harmonics::from_stor::<EARTH>(MemoryBackend::j2_jgm3()),
@@ -188,7 +188,7 @@ fn gmat_val_harmonics_21x21() {
 
     let mut prop = Propagator::new::<RK89>(&PropOpts::with_adaptive_step(min_step, max_step, accuracy));
 
-    let mut dyn = J2Dyn {
+    let mut dynamics= J2Dyn {
         count: 0,
         twobody: TwoBody::from_state_vec::<EARTH>(&initial_state.to_cartesian_vec()),
         harmonics: Harmonics::from_stor::<EARTH>(MemoryBackend::from_cof(filepath, 21, 21, true)),
@@ -311,7 +311,7 @@ fn gmat_val_harmonics_70x70() {
 
     let mut prop = Propagator::new::<RK89>(&PropOpts::with_adaptive_step(min_step, max_step, accuracy));
 
-    let mut dyn = J2Dyn {
+    let mut dynamics= J2Dyn {
         count: 0,
         twobody: TwoBody::from_state_vec::<EARTH>(&initial_state.to_cartesian_vec()),
         harmonics: Harmonics::from_stor::<EARTH>(MemoryBackend::from_cof(filepath, 70, 70, true)),

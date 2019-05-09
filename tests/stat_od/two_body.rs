@@ -108,7 +108,7 @@ fn ckf_fixed_step_perfect_stations_std() {
 
     // Generate the truth data on one thread.
     thread::spawn(move || {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+        let mut dynamics = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
         let mut prop = Propagator::new::<RK4Fixed>(&mut dyn, &opts.clone());
         prop.tx_chan = Some(&truth_tx);
         prop.until_time_elapsed(prop_time);
@@ -247,7 +247,7 @@ fn ekf_fixed_step_perfect_stations() {
 
     // Generate the truth data on one thread.
     thread::spawn(move || {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+        let mut dynamics = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
         let mut prop = Propagator::new::<RK4Fixed>(&mut dyn, &opts.clone());
         prop.tx_chan = Some(&truth_tx);
         prop.until_time_elapsed(prop_time);
@@ -385,7 +385,7 @@ fn ckf_fixed_step_perfect_stations_dual() {
 
     // Generate the truth data on one thread.
     thread::spawn(move || {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+        let mut dynamics = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
         let mut prop = Propagator::new::<RK4Fixed>(&mut dyn, &opts.clone());
         prop.tx_chan = Some(&truth_tx);
         prop.until_time_elapsed(prop_time);

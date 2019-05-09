@@ -53,7 +53,7 @@ fn main() {
     // Generate the truth data on one thread.
     thread::spawn(move || {
         let mut prop = Propagator::new::<RK89>(&opts.clone());
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
         dyn.tx_chan = Some(&truth_tx);
         prop.until_time_elapsed(prop_time, &mut dyn, error_ctrl::rss_step_pos_vel);
     });

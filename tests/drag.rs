@@ -59,7 +59,7 @@ fn basic_drag() {
 
     let mut prop = Propagator::new::<RK89>(&PropOpts::with_adaptive_step(min_step, max_step, accuracy));
 
-    let mut dyn = SimpleDrag {
+    let mut dynamics= SimpleDrag {
         twobody: TwoBody::from_state_vec::<EARTH>(&initial_state.to_cartesian_vec()),
         drag: BasicDrag {
             rho: 7e-15, // XXX: This is a dummy value which needs to be updated to something more realistic

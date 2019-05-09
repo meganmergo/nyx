@@ -36,7 +36,7 @@ fn two_body_parametrized() {
         5.848940867758592,
     ]);
 
-    let mut dyn = TwoBody::from_state_vec::<EARTH>(init);
+    let mut dynamics= TwoBody::from_state_vec::<EARTH>(init);
     let mut prop = Propagator::new::<RK89>(
         &mut dyn,
         &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStepPV {}),
@@ -77,7 +77,7 @@ fn two_body_custom() {
         5.848940867979176,
     );
 
-    let mut dyn = TwoBody::from_state_vec_with_gm(init, 398600.4415);
+    let mut dynamics= TwoBody::from_state_vec_with_gm(init, 398600.4415);
     let mut prop = Propagator::new::<RK89>(&mut dyn, &PropOpts::<RSSStepPV>::default());
     prop.until_time_elapsed(prop_time);
     assert_eq!(prop.state(), rslt, "two body prop failed");
@@ -124,7 +124,7 @@ fn two_body_state_parametrized() {
         ModifiedJulian { days: 21546.0 },
     );
 
-    let mut dyn = TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
+    let mut dynamics= TwoBody::from_state_vec::<EARTH>(initial_state.to_cartesian_vec());
     let mut prop = Propagator::new::<RK89>(
         &mut dyn,
         &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStepPV {}),
@@ -182,7 +182,7 @@ fn two_body_dual() {
         -0.00027005954128877916,
     );
 
-    let dyn = TwoBodyWithDualStm::from_state::<EARTH, ECI>(init);
+    let dynamics= TwoBodyWithDualStm::from_state::<EARTH, ECI>(init);
     let (fx, grad) = dyn.compute(0.0, &init.to_cartesian_vec());
 
     assert!(

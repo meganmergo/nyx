@@ -13,7 +13,7 @@ fn const_mom() {
     let tensor = Matrix3::new(10.0, 0.0, 0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 2.0);
     let tolerance = 1e-8;
 
-    let mut dyn = AngularMom::from_tensor_matrix(&tensor, &omega);
+    let mut dynamics= AngularMom::from_tensor_matrix(&tensor, &omega);
     let init_momentum = dyn.momentum().norm();
 
     let mut prop = Propagator::new::<CashKarp45>(&mut dyn, &PropOpts::with_adaptive_step(0.1, 5.0, 1e-8, LargestStep {}));

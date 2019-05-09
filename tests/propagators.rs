@@ -45,7 +45,7 @@ fn regress_leo_day_adaptive() {
     ];
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<RK2Fixed>(&mut dyn, &PropOpts::with_fixed_step(1.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[0], "two body prop failed");
@@ -60,7 +60,7 @@ fn regress_leo_day_adaptive() {
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<CashKarp45>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -78,7 +78,7 @@ fn regress_leo_day_adaptive() {
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Fehlberg45>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -149,7 +149,7 @@ fn gmat_val_leo_day_adaptive() {
     ];
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Dormand45>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -167,7 +167,7 @@ fn gmat_val_leo_day_adaptive() {
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Verner56>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -185,7 +185,7 @@ fn gmat_val_leo_day_adaptive() {
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Dormand78>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -203,7 +203,7 @@ fn gmat_val_leo_day_adaptive() {
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<RK89>(
             &mut dyn,
             &PropOpts::with_adaptive_step(min_step, max_step, accuracy, RSSStatePV {}),
@@ -276,35 +276,35 @@ fn gmat_val_leo_day_fixed() {
     ];
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<RK4Fixed>(&mut dyn, &PropOpts::with_fixed_step(1.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[0], "two body prop failed");
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Verner56>(&mut dyn, &PropOpts::with_fixed_step(10.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[1], "two body prop failed");
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Dormand45>(&mut dyn, &PropOpts::with_fixed_step(10.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[2], "two body prop failed");
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<Dormand78>(&mut dyn, &PropOpts::with_fixed_step(10.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[3], "two body prop failed");
     }
 
     {
-        let mut dyn = TwoBody::from_state_vec::<EARTH>(init.clone());
+        let mut dynamics= TwoBody::from_state_vec::<EARTH>(init.clone());
         let mut prop = Propagator::new::<RK89>(&mut dyn, &PropOpts::with_fixed_step(10.0, RSSStatePV {}));
         prop.until_time_elapsed(prop_time);
         assert_eq!(prop.state(), all_rslts[4], "two body prop failed");
